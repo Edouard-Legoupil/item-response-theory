@@ -383,13 +383,13 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#building-composite-indicators-with-irt">Building composite indicators with IRT</a></li>
-<li><a href="#step-1-clustering-algorithm-dimensionality-assessment">Step 1 : Clustering algorithm / Dimensionality assessment</a></li>
-<li><a href="#step-2-adoption-the-best-model-parameters">Step 2 : Adoption the best model parameters</a><ul>
+<li><a href="#step-1-clustering-algorithm-dimensionality-assessment">Step 1: Clustering algorithm / Dimensionality assessment</a></li>
+<li><a href="#step-2-adoption-the-best-model-parameters">Step 2: Adoption the best model parameters</a><ul>
 <li><a href="#find-if-global-or-local-logit-shall-be-used">Find if Global or local logit shall be used</a></li>
 <li><a href="#likelihood-ratio">Likelihood ratio</a></li>
 <li><a href="#test-of-unidimensionality">Test of unidimensionality</a></li>
 </ul></li>
-<li><a href="#step-3-item-aggregation-using-the-weights">Step 3 :Item aggregation using the weights</a></li>
+<li><a href="#step-3-item-aggregation-using-the-weights">Step 3: Item aggregation using the weights</a></li>
 </ul>
 </div>
 
@@ -428,7 +428,7 @@ data(hads)
 X &lt;- as.matrix(hads)</code></pre>
 </div>
 <div id="step-1-clustering-algorithm-dimensionality-assessment" class="section level1">
-<h1>Step 1 : Clustering algorithm / Dimensionality assessment</h1>
+<h1>Step 1: Clustering algorithm / Dimensionality assessment</h1>
 <p>Investigating the best number of latent classes is done through Hierarchical clustering of items based on the Rasch model.</p>
 <p>The dendrogram highlights three dimensions composing the multidimensional construct.</p>
 <p>Considering the item contents, the assessed dimension can be interpreted from a narrative point of view.</p>
@@ -702,7 +702,7 @@ summary(out)</code></pre>
 ## Step 4     2  3   24.529  8   0.002        1 2 3 4 5</code></pre>
 </div>
 <div id="step-2-adoption-the-best-model-parameters" class="section level1">
-<h1>Step 2 : Adoption the best model parameters</h1>
+<h1>Step 2: Adoption the best model parameters</h1>
 <p>Model selection procedure and estimation of ordinal polytomous multidimensional LCIRT model for assigning weights to the test items / Extraction of the estimated discrimination power</p>
 <p>To make the estimation of the proposed models and clustering of items faster perform the analyses after aggregating the original records which correspond to the same response patternso as to obtain a matrix with a record for each distinct response configuration (rather than for each statistical unit).</p>
 <p>For this aim, use function aggr_data, which requires as input an object of type matrix (and not of type data.frame) corresponding to the unit-by-unit response configurations. Output from function is * <code>data_dis</code>: matrix of distinct configurations; * <code>freq</code> : vector of corresponding frequencies; * <code>label</code>: index of each original response configuration among the distinct ones</p>
@@ -783,25 +783,13 @@ nrow(X)</code></pre>
 ## Constraints on the difficulty = 0 
 ## Type of initialization =        0 
 ## *-------------------------------------------------------------------------------*</code></pre>
-<pre class="r"><code>stargazer(compare_models(out1, out2, out3, out4))</code></pre>
-<pre><code>## 
-## % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-## % Date and time: Tue, May 28, 2019 - 04:07:41 PM
-## \begin{table}[!htbp] \centering 
-##   \caption{} 
-##   \label{} 
-## \begin{tabular}{@{\extracolsep{5pt}} cccc} 
-## \\[-1.8ex]\hline 
-## \hline \\[-1.8ex] 
-##  &amp; log-lik. &amp; np &amp; BIC \\ 
-## \hline \\[-1.8ex] 
-## model1 &amp; $$-$3,153.151$ &amp; $42$ &amp; $6,529.040$ \\ 
-## model2 &amp; $$-$2,814.635$ &amp; $85$ &amp; $6,080.051$ \\ 
-## model3 &amp; $$-$2,677.822$ &amp; $128$ &amp; $6,034.468$ \\ 
-## model4 &amp; $$-$2,645.435$ &amp; $171$ &amp; $6,197.736$ \\ 
-## \hline \\[-1.8ex] 
-## \end{tabular} 
-## \end{table}</code></pre>
+<pre class="r"><code>#stargazer(compare_models(out1, out2, out3, out4))
+compare_models(out1, out2, out3, out4)</code></pre>
+<pre><code>##         log-lik.  np      BIC
+## model1 -3153.151  42 6529.040
+## model2 -2814.635  85 6080.051
+## model3 -2677.822 128 6034.468
+## model4 -2645.435 171 6197.736</code></pre>
 </div>
 <div id="find-if-global-or-local-logit-shall-be-used" class="section level2">
 <h2>Find if Global or local logit shall be used</h2>
@@ -865,23 +853,11 @@ out31 &lt;- est_multi_poly(S, yv,
 ## Type of initialization =        0 
 ## *-------------------------------------------------------------------------------*</code></pre>
 <pre class="r"><code>## Findout if global or local logit is better
-stargazer(compare_models(out31,out32))</code></pre>
-<pre><code>## 
-## % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-## % Date and time: Tue, May 28, 2019 - 04:07:58 PM
-## \begin{table}[!htbp] \centering 
-##   \caption{} 
-##   \label{} 
-## \begin{tabular}{@{\extracolsep{5pt}} cccc} 
-## \\[-1.8ex]\hline 
-## \hline \\[-1.8ex] 
-##  &amp; log-lik. &amp; np &amp; BIC \\ 
-## \hline \\[-1.8ex] 
-## model1 &amp; $$-$2,726.348$ &amp; $72$ &amp; $5,834.534$ \\ 
-## model2 &amp; $$-$2,741.321$ &amp; $72$ &amp; $5,864.479$ \\ 
-## \hline \\[-1.8ex] 
-## \end{tabular} 
-## \end{table}</code></pre>
+#stargazer(compare_models(out31,out32))
+compare_models(out31,out32)</code></pre>
+<pre><code>##         log-lik. np      BIC
+## model1 -2726.348 72 5834.534
+## model2 -2741.321 72 5864.479</code></pre>
 </div>
 <div id="likelihood-ratio" class="section level2">
 <h2>Likelihood ratio</h2>
@@ -1013,8 +989,8 @@ out311 &lt;- est_multi_poly(S, yv,
                          k = 3,
                          start = 0,
                          link = 1,
-                         disc = 1,
-                         difl = 0)</code></pre>
+                         disc = 1, # Indicator of constraints on the discriminating indices ( 1 = free)
+                         difl = 0) # indicator of constraints on the difficulty levels (0 = free)</code></pre>
 <pre><code>## *-------------------------------------------------------------------------------*
 ## Model with multidimensional structure
 ##             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
@@ -1031,8 +1007,8 @@ out3111 &lt;- est_multi_poly(S, yv,
                           k = 3,
                           start = 0,
                           link = 1,
-                          disc = 1,
-                          difl = 1)</code></pre>
+                          disc = 1,# Indicator of constraints on the discriminating indices ( 1 = free)
+                          difl = 1)  # indicator of constraints on the difficulty levels (0 = free)</code></pre>
 <pre><code>## *-------------------------------------------------------------------------------*
 ## Model with multidimensional structure
 ##             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
@@ -1049,8 +1025,8 @@ out3112 &lt;- est_multi_poly(S, yv,
                           k = 3,
                           start = 0,
                           link = 1,
-                          disc = 0,
-                          difl = 0)</code></pre>
+                          disc = 0,# Indicator of constraints on the discriminating indices (0 = all equal to one)
+                          difl = 0) # indicator of constraints on the difficulty levels (0 = free)</code></pre>
 <pre><code>## *-------------------------------------------------------------------------------*
 ## Model with multidimensional structure
 ##             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
@@ -1067,8 +1043,8 @@ out3113 &lt;- est_multi_poly(S,yv,
                           k = 3,
                           start = 0,
                           link = 1,
-                          disc = 0,
-                          difl = 1)</code></pre>
+                          disc = 0,# Indicator of constraints on the discriminating indices (0 = all equal to one)
+                          difl = 1)  # indicator of constraints on the difficulty levels (1 = rating scale parametrization)</code></pre>
 <pre><code>## *-------------------------------------------------------------------------------*
 ## Model with multidimensional structure
 ##             [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
@@ -1081,46 +1057,20 @@ out3113 &lt;- est_multi_poly(S,yv,
 ## Type of initialization =        0 
 ## *-------------------------------------------------------------------------------*</code></pre>
 <pre class="r"><code># comparison of RS-GRM and 1P-GRM with GRM
-stargazer(compare_models(out311,
+compare_models(out311,
                out3111,
                out3112,
-               nested = TRUE))</code></pre>
-<pre><code>## 
-## % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-## % Date and time: Tue, May 28, 2019 - 04:10:02 PM
-## \begin{table}[!htbp] \centering 
-##   \caption{} 
-##   \label{} 
-## \begin{tabular}{@{\extracolsep{5pt}} ccccccc} 
-## \\[-1.8ex]\hline 
-## \hline \\[-1.8ex] 
-##  &amp; log-lik. &amp; np &amp; BIC &amp; LR(vs. model1) &amp; df &amp; p-value \\ 
-## \hline \\[-1.8ex] 
-## model1 &amp; $$-$2,731.893$ &amp; $59$ &amp; $5,776.682$ &amp; $$ &amp; $$ &amp; $$ \\ 
-## model2 &amp; $$-$2,795.570$ &amp; $33$ &amp; $5,766.149$ &amp; $127.353$ &amp; $26$ &amp; $0$ \\ 
-## model3 &amp; $$-$2,741.285$ &amp; $46$ &amp; $5,726.521$ &amp; $18.782$ &amp; $13$ &amp; $0.130$ \\ 
-## \hline \\[-1.8ex] 
-## \end{tabular} 
-## \end{table}</code></pre>
-<pre class="r"><code>stargazer(compare_models(out3112,
+               nested = TRUE)</code></pre>
+<pre><code>##         log-lik. np      BIC LR(vs. model1) df      p-value
+## model1 -2731.893 59 5776.682             NA NA           NA
+## model2 -2795.570 33 5766.149      127.35287 26 2.553513e-15
+## model3 -2741.285 46 5726.521       18.78214 13 1.300150e-01</code></pre>
+<pre class="r"><code>compare_models(out3112,
                out3113,
-               nested = TRUE))</code></pre>
-<pre><code>## 
-## % Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-## % Date and time: Tue, May 28, 2019 - 04:10:02 PM
-## \begin{table}[!htbp] \centering 
-##   \caption{} 
-##   \label{} 
-## \begin{tabular}{@{\extracolsep{5pt}} ccccccc} 
-## \\[-1.8ex]\hline 
-## \hline \\[-1.8ex] 
-##  &amp; log-lik. &amp; np &amp; BIC &amp; LR(vs. model1) &amp; df &amp; p-value \\ 
-## \hline \\[-1.8ex] 
-## model1 &amp; $$-$2,741.285$ &amp; $46$ &amp; $5,726.521$ &amp; $$ &amp; $$ &amp; $$ \\ 
-## model2 &amp; $$-$2,844.518$ &amp; $20$ &amp; $5,795.102$ &amp; $206.467$ &amp; $26$ &amp; $0$ \\ 
-## \hline \\[-1.8ex] 
-## \end{tabular} 
-## \end{table}</code></pre>
+               nested = TRUE)</code></pre>
+<pre><code>##         log-lik. np      BIC LR(vs. model1) df p-value
+## model1 -2741.285 46 5726.521             NA NA      NA
+## model2 -2844.518 20 5795.102       206.4668 26       0</code></pre>
 <pre class="r"><code>rbind(out3112$Th, prob = out3112$piv)</code></pre>
 <pre><code>##                Class 1  Class 2  Class 3
 ## Dimension 1 -0.7750574 1.183920 3.419458
@@ -1128,7 +1078,7 @@ stargazer(compare_models(out311,
 </div>
 </div>
 <div id="step-3-item-aggregation-using-the-weights" class="section level1">
-<h1>Step 3 :Item aggregation using the weights</h1>
+<h1>Step 3: Item aggregation using the weights</h1>
 <p>Weights = discrimination parameters, estimated through a Multidimensional IRT model, using a <code>2PL</code> parametrisation</p>
 <ul>
 <li><strong>1-PL</strong>: one-paramater logistic parametrisation (difficulty)</li>
