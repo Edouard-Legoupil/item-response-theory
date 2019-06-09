@@ -127,17 +127,36 @@ This tutorial is adapted from 2 articles:
 
 # Introduction
 
-## Problem Statement: Measuring Multidimensional Vulnerability
+## Problem Statement: Targeting & prioritisation
 
 In a humanitarian environment, vulnerability may be defined differently, depending on the mandates of the humanitarian agencies, the intended impact and the definition of the population to be assisted. For instance, WFP measures food security through the Food Security Index (FSI), a composite indicator defined in the widely used Consolidated Approach for Reporting Indicators of Food Security. 
 
 For the UNHCR, refugees’ vulnerability is identified in the frame of the protection risk analysis by looking at the concept of international protection, which put into context risk, threat, vulnerabilities, and capacities. This accounts for a case-specific condition related to household capacity, dependency level within the household and occurrence of specific needs, such as the occurrence of pressing medical needs, disabilities or individuals with particular constraints. 
 
-Simple targeting approaches (like categoric, administrative or geographic targeting) can be simple options but does not offer the capacity to prioritize objectively individuals in case of limited budget. While those approaches are definitely the best ones during an initial emergency phase, they are likely not sustainable in the long term (at least beyond the authority of a sovereign state).
+The panorama of options for targerting approach has been already well documented (cf [Review of Needs Assessment Tools, Response Analysis Frameworks, and Targeting Guidance for Urban Humanitarian Response](https://pubs.iied.org/pdfs/10796IIED.pdf#page27). Simple targeting approaches (like categoric, administrative or geographic targeting) appears as easy options. Indeed there's a real debate arguing for a [better global efficiency of categoric targeting](https://www.developmentpathways.co.uk/blog/tag/targeting/) in the context of national protection system. Though those approaches comes with two important limitations: 
 
-In this context, a significant challenge is to account for the combination and articulation of the various dimensions of vulnerability through __scores__ to define population segment with a similar profile and for which distinct [theories of change](https://en.wikipedia.org/wiki/Theory_of_change) can be built. Each population segment shall be then targeted and prioritised with a combination of coordinated assistance and intervention types, coming from multiple agencies and varying from emergency support, unconditional assistance, training, livelihoods graduation or even micro-credit.
+ * They do not offer the capacity to prioritize objectively individuals in case of limited budget.  
+ 
+ * While they can be definitely ones during an initial emergency phase, likely only sovereign auhtority can sustain their funding in the long term. Agencies and organisation working in the context of time bounded programmes or projects that would use such approaches take the risk of creating [cobra effects](https://en.wikipedia.org/wiki/Cobra_effect)
 
-## Challenges with Vulnerability scoring
+In this context, a significant challenge is to account for the combination and articulation of the various dimensions of vulnerability through __scores__. Vulnerability scores offers not only a way to prioritise household based on budget constraints but also to define population segment with a similar profile and for which distinct [theories of change](https://en.wikipedia.org/wiki/Theory_of_change) can be built. Each population segment shall be then targeted and prioritised with a combination of coordinated assistance and intervention types, coming from multiple agencies and varying from emergency support, unconditional assistance, training, livelihoods graduation or even micro-credit.
+
+## Measuring Multidimensional Vulnerability
+
+Vulnerability score are compsite measurement (cf. [Handbook on Constructing Composite Indicators: Methodology and User Guide, OECD/JRC 2008](http://www.oecd.org/sdd/42495745.pdf)) obtained through combination of aggregated and weighted indicators. Due to the very nature of vulnerability, the sub-vulnerability indicators are unlikely to be fully substituable, i.e.  one indicator is unlikely to fully compensate another one. For vulnerability scoring, weights are rather expected to refect the importance of each indicator. Therefore, it is advised to multiply (geometric mean), rather to sum (arthmetic mean) each indicator in order to reflect indicators imperfect substitutability.
+
+Weights value for each (sub-)indicators can be obtained  from three broad approaches:
+
+ * First option, weighting sources can be __personal views__ of experts, societal views estimated through surveys or public opinion polls. 
+
+ * Second option, it's possible to define a __proxy indicator__ for vulnerability (for instance expenditure per capita as used in the Proxy Means Testing, but also Population Group based on a population segmentation excercise) and from there use regression and other predictive models to get a formula. The main limitation from this approach consists in the assumptions behind the quality of the proxy: for instance, an household can have a good income precisely because children in the household are working. The second limitation for this approach are that weight calculated from within the data (i.e based on respondent) as a function of the data-set, meaning the resulting scores are highly dependent on the representativeness of the respondent....
+
+ * Last option, there are other non-subjective weighting schemes (i.e. task of assigning weights), based on data-driven approaches  that do not depend on value judgements or proxie while allowing for analytically sound and transparent process. Though most __data-driven techniques__ such as Principal Component Analysis (PCA), Factor Analysis, Structural Equation Model or Benefit-of-the-Doubt,  assumes the observed variables to be continuous even when they are in fact binary or categorical, as this is the case in most household survey questionnaire (cf. [On Construction of Robust Composite Indices by Linear Aggregation, Mishra, 2008](https://www.researchgate.net/profile/Sudhanshu_K_Mishra/publication/24116360_On_Construction_of_Robust_Composite_Indices_by_Linear_Aggregation/links/5a008f9e4585159634bb6313/On-Construction-of-Robust-Composite-Indices-by-Linear-Aggregation.pdf?origin=publication_detail)). 
+ 
+ We will focus here on this last approach and try to address the limitations described above. The validation of an assistance targeting system could be performed through a detailed analysis of exclusion/exclusion errors from the 3 categories of formula described above.
+
+
+## Vulnerability as a "_latent_" variable
 
 A major task in the measurement of complex and latent household vulnerability dimensions phenomena such as deprivation (or _Basic Needs_), wealth (or _Coping capacity_) and ability (or _Well-being_) consists of __summarising information__ available from a set of dichotomous or ordinal questions (also refered as _items_) from an household survey questionnaire. For example:
 
@@ -145,17 +164,6 @@ A major task in the measurement of complex and latent household vulnerability di
 
  * Wealth (or _Coping capacity_) is a latent concept to be derived from observable assets, and measures of wealth are calculated from a set of assets a household possesses (cf. [Measuring Household Wealth with Latent Trait Modelling: An Application to Malawian DHS Data, Vandemoortele, 2014](https://link.springer.com/article/10.1007/s11205-013-0447-z)).
 
-## Defining Indicators weights
-
-Weights for each (sub-)indicators can be obtained  from three broad approaches:
-
- * First, weighting sources can be __personal views__ of experts, societal views estimated through surveys or public opinion polls. Weights can be chosen subjectively, by assigning equal weights to the various dimensions which contribute to define a complex phenomenon. Otherwise, one can assign a differential weighting scheme, which gives greater importance to the dimensions with greater importance (cf. [Handbook on Constructing Composite Indicators: Methodology and User Guide, OECD/JRC 2008](http://www.oecd.org/sdd/42495745.pdf)).
-
- * Second, it's possible to define a __proxy indicator__ for vulnerability (for instance expenditure per capita as used in the Proxy Means Testing, but also Population Group based on a population segmentation excercise) and from there use regression and other predictive models to get a formula. The main limitation from this approach consists in the assumptions behind the quality of the proxy: for instance, an household can have a good income precisely because children in the household are working. The second limitation for this approach are that weight calculated from within the data (i.e based on respondent) as a function of the data-set, meaning the resulting scores are highly dependent on the representativeness of the respondent....
-
- * Last, there are other non-subjective weighting schemes (i.e. task of assigning weights), based on __data-driven approaches__  that do not depend on value judgements or proxie while allowing for analytically sound and transparent process. Though most data-driven techniques such as Principal Component Analysis (PCA), Factor Analysis, Structural Equation Model or Benefit-of-the-Doubt,  assumes the observed variables to be continuous even when they are in fact binary or categorical, as this is the case in most household survey questionnaire (cf. [On Construction of Robust Composite Indices by Linear Aggregation, Mishra, 2008](https://www.researchgate.net/profile/Sudhanshu_K_Mishra/publication/24116360_On_Construction_of_Robust_Composite_Indices_by_Linear_Aggregation/links/5a008f9e4585159634bb6313/On-Construction-of-Robust-Composite-Indices-by-Linear-Aggregation.pdf?origin=publication_detail)). 
- 
- We will focus here on this last approach and try to address the described limitations.
 
 ## Building composite indicators with IRT 
 
@@ -175,14 +183,11 @@ The term `item`, here is generic, covering all kinds of informative items. They 
 
 The main advantage of the `discrete` approach consists in the possibility of clustering the statistical units into homogeneous groups (latent classes): units (people, refugees and so on) in the same class share very similar characteristics in terms of the investigated (multidimensional) latent trait. Hence, this model would also allow us to classify refugees in similar groups. Such model can support prioritization needs as it assigns a score to each group, so that it is possible to highlight the most/least vulnerable groups of refugees and/or sketch several refugees’ profiles according to the various dimensions of it. 
 
-## Suggested Procedure
-
-Composite indicators can be built using IRT using the following steps:
+Composite indicators can be built using IRT using the following __procedure__:
 
    *  Step 1 : Assess dimensionality within the variables of the data-set → Multidimensional Latent Class IRT model + clustering algorithm
-   *  Step 2 : Adoption the best model for assigning weights to the test items
+   *  Step 2 : Adoption the best model for assigning weights to the test items. This steps also allows to account for dimensionality (clusters) within respondents.
    *  Step 3 : Item aggregation using the weights obtained at the previous step → construction of a composite indicator for each dimension
-
 
 
 # Step 0: Data Preparation
@@ -581,19 +586,12 @@ The discrimination parameters express the informative capacity of a variable and
 
 Weights are extracted from discrimination parameters, estimated through a Multidimensional IRT model, using a `2PL` parametrisation
 
-For the record, we can have either: 
-
- *  __1-PL__: one-paramater logistic parametrisation (_difficulty_ only is unconstrained)
- 
- *  __2-PL__: two-paramater logistic parametrisation (both _difficulty_ and _discrimination_ are unconstrained)
 
 Two composite indicators can be calculated:
 
  * __Unweighted score__ (raw relative frequency of correct response) 
  * __Weighted score__, using ˆ γ j (and their transformation) for weighting the items
  
-
-The model required for composite indicator is a bidimensional ( `multi = multi2`) Graded Response Model with two-parameter unconstrained logistic parametrisation (both difficulty and discrimination are unconstrained, `disc = 1` and  `difl = 0`)  and 3 latent classes (`k =3`).
 
 
 ```{r finalmodel,  warning = FALSE, message = FALSE, results = "hide"}
@@ -834,3 +832,5 @@ If the data at issue are multilevel (e.g., refugees nested in different neighbor
 Additionally, Discrete Multidimensional Two-Tier IRT Model, an extension of the previous models can be explored to account for the double dependency of single items on more than one dimension of the Latent Variable.
 
 In further research, the proposed procedure can therefore be extended through a classification of higher-order units in homogeneous groups - instead of ranking them one by one -  that would take advantage of the latent class part of the described method, and account for the multilevel structure of the data. So basically not only the analysis would provide the vulnerability score of household but also account for a potential geographic effect within their vulnerability profile.
+
+Another element of research includes to define the impact of sampling on the resulting weights.
